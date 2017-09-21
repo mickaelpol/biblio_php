@@ -1,7 +1,8 @@
 $(function(){
 
-	$('.nav').click(function(){
-		console.log("hello");
+	$('.nav').on('click', 'li', function(){
+		$('.nav li.active').removeClass('active');
+		$(this).addClass('active');
 	})
 
 })
