@@ -1,6 +1,6 @@
 $(function(){
 
-	$('activeLien').click(function(){
+	$('.nav').click(function(){
 		console.log("hello");
 	})
 
