@@ -29,7 +29,7 @@
 			</div>
 		</div>
 
-		<!-- <div class="col-xs-4">
+		<div class="col-xs-4">
 			<div class="panel panel-default">
 				<div class="panel-heading text-center text-uppercase"><strong>Echanger</strong></div>
 				<div class="panel-body">
@@ -38,7 +38,7 @@
 					</blockquote>
 				</div>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </div>
 
