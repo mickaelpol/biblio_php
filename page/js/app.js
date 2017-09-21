@@ -1,1 +1,7 @@
-console.log("hello world");
+$(function(){
+
+	$('activeLien').click(function(){
+		console.log("hello");
+	})
+
+})

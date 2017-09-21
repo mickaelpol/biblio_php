@@ -3,7 +3,7 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="?p=accueil">Accueil Bibliotheque</a>
 		</div>
-		<ul class="nav navbar-nav">
+		<ul id="activeLien" class="nav navbar-nav">
 			<li class="active"><a href="?p=listArt"><span class="glyphicon glyphicon-align-justify"></span> Liste des articles</a></li>
 			<li><a href="?p=genre"><span class="glyphicon glyphicon-bookmark"></span> Genres</a></li>
 			<form class="navbar-form navbar-left">
