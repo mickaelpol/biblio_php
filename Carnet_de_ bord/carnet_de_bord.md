@@ -40,7 +40,7 @@ Groupe Aurelie, Leo, Mickael
 
 -------------------------------------------------------------------- 
 
->**Troisième journée : **
+>**Troisième journée :**
 
 - création de la BDD sur mysql avec la fonction qui gere les dates d'ajout 
 - programmation php en cour pour afficher les requete sql sur le site en local
