@@ -2,7 +2,7 @@
 **projet_biblio_php**
 ============================
 
-##**Livrables :**
+##Livrables :
 ------------------------------------------------------------
 
 >**[Drive d'equipe](https://docs.google.com/spreadsheets/d/1Ykhp-2nql3hpZelgMINlQQekDRt7UqxC5fS5EsgJxIg/edit?usp=sharing)**
