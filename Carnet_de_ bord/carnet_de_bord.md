@@ -1,8 +1,9 @@
-Groupe Aurelie, Leo, Mickael .
+Groupe Aurelie, Leo, Mickael 
+==========================
 
 
 
-premier jour : 
+>**premier jour :** 
 
 - liste et répartition des taches
 - mise en place des wireframe admin/client
@@ -12,7 +13,7 @@ premier jour :
 
 
 
-Fin de première journée :
+**Fin de première journée :**
  
 - wireframe terminé
 - MCD terminé 
@@ -22,7 +23,7 @@ Fin de première journée :
 
 --------------------------------------------------------------------
 
-deuxième journée :
+>**deuxième journée :**
 
 - mise en place du layout php
 - création de la BDD sur mysql pour un transfer vers postgresql
@@ -30,7 +31,7 @@ deuxième journée :
 - création du script jquery qui gere si le formulaire de connection admin est remplis
 
 
-fin de deuxième journée :
+**fin de deuxième journée :**
 
 - layout php bien avancé 
 - BDD pas créer
@@ -39,9 +40,10 @@ fin de deuxième journée :
 
 -------------------------------------------------------------------- 
 
-Troisième journée : 
+>**Troisième journée : **
 
 - création de la BDD sur mysql avec la fonction qui gere les dates d'ajout 
 - programmation php en cour pour afficher les requete sql sur le site en local
 - Doc sur markdown 
 - Doc sur un possible transfer de mysql vers postresql
+- envoi des livrables 
