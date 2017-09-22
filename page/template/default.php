@@ -21,7 +21,8 @@
 <!-- Inclus la page footer.php pour l'afficher sur toutes les pages -->
 <?php include('footer.php'); ?>
 
-<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script> -->
 <script type="text/javascript" src="page/js/app.js"></script>
 </body>
 </html>
