@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
 		<div class="col-xs-12 bg-inverse">
 			<h1 class="text-uppercase text-center page-header">listes des articles</h1>
@@ -8,7 +8,7 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-6 col-xs-offset-3">
+		<div class="col-xs-3 col-sm-6 col-sm-offset-3">
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
