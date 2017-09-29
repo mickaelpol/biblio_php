@@ -2,26 +2,21 @@
 
 session_start();
 
-// include de la connection a la bdd
+$search = htmlspecialchars($_POST['s'], ENT_QUOTES);
+
 include('./connect/connection.php');
 
 
+$sql = sprintf("SELECT * FROM art_article 
+WHERE art_titre LIKE  '%%%s%%'",$search);
 
-$tri = "";
-if(!empty($_GET['tri'])){
-
-	$tri = ' order by  "'.$_GET['tri'].'" DESC ';
-}
+$recherche = $bdd->prepare($sql);
+$recherche->execute();
 
 
-$sql = "SELECT * FROM art_article".$tri;
-
-$query = $bdd->prepare($sql);
-$query->execute();
 
 ?>
 
-<!-- contenu de ma liste d'article sous forma de tableau -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 bg-inverse">
@@ -38,6 +33,10 @@ $query->execute();
 	<br>
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
+
+		<div class="col-xs-6">
+			<p>Resultat pour votre recherche : <strong>" <?= $search ?> "</strong> </p>
+		</div>
 
 			<div id="idlist">
 				<div class="text-center">
@@ -60,7 +59,7 @@ $query->execute();
 					<tbody id="tableau" class="text-center list">
 
 						<?php  
-						while ($donnees = $query->fetch()){
+						while ($donnees = $recherche->fetch()){
 							$date = $donnees['art_date'];
 							$date = new DateTime($date);		
 							?>
@@ -71,7 +70,7 @@ $query->execute();
 								<td><?= $donnees['art_genre'] ?></td>
 							</tr>
 							<?php }
-							$query->closeCursor();
+							$recherche->closeCursor();
 							?>
 
 						</tbody>
