@@ -8,7 +8,7 @@ include('./connect/connection.php');
 
 
 $sql = sprintf("SELECT * FROM art_article 
-WHERE art_titre, art_genre LIKE  '%%%s%%'",$search);
+WHERE art_titre LIKE  '%%%s%%'",$search);
 
 $recherche = $bdd->prepare($sql);
 $recherche->execute();
