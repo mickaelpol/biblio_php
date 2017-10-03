@@ -2,28 +2,43 @@
 session_start();
 
 
+function testInput($fichier){
+	if(empty($_POST[$fichier])){
+		return "<div class='text-danger'> le champ ". $fichier . " est vide</div>";
+	} 
+}
+
 
 
 if (isset($_POST['valid'])) {
 
-	include('./connect/connection.php');
+	$erreurTitreArt = ": " . testInput("titre");
+	$erreurAuteurArt = ": " . testInput("auteur");
+	$erreurGenreArt = ": " . testInput("genre");
+	$erreurContentArt = ": " . testInput("contenu");
 
-	$erreur = "";
-	$message = "";
+	if (!empty($_POST['titre']) && !empty($_POST['auteur']) && !empty($_POST['genre']) && !empty($_POST['content'])) {
+	
 
-	$titre = htmlspecialchars($_POST['titre'], ENT_QUOTES);
-	$auteur = htmlspecialchars($_POST['auteur'], ENT_QUOTES);
-	$genre = htmlspecialchars($_POST['genre'], ENT_QUOTES);
-	$contenu = htmlspecialchars($_POST['content'], ENT_QUOTES);
+		include('./connect/connection.php');
+
+		$erreur = "";
+		$message = "";
+
+		$titre = htmlspecialchars($_POST['titre'], ENT_QUOTES);
+		$auteur = htmlspecialchars($_POST['auteur'], ENT_QUOTES);
+		$genre = htmlspecialchars($_POST['genre'], ENT_QUOTES);
+		$contenu = htmlspecialchars($_POST['content'], ENT_QUOTES);
 
 
-	$insert = sprintf("INSERT  INTO art_article(art_titre, art_auteur, art_genre, art_content, art_date) 
-		VALUES ('%s', '%s', '%s', '%s', now() + interval '2 hours');", $titre, $auteur, $genre, $contenu);
+		$insert = sprintf("INSERT  INTO art_article(art_titre, art_auteur, art_genre, art_content, art_date) 
+			VALUES ('%s', '%s', '%s', '%s', now() + interval '2 hours');", $titre, $auteur, $genre, $contenu);
 
-	$insertArt = $bdd->prepare($insert);
-	$insertArt->execute();
-	$message = '<div class="row"><p class="text-success text-center">article ajouté avec succès cliquez <a href="?p=listArtAdmin" >ici pour être re diriger directement</a></p></div>';
-	header('refresh:5;url=?p=listArtAdmin');
+		$insertArt = $bdd->prepare($insert);
+		$insertArt->execute();
+		$message = '<div class="row"><p class="text-success text-center">article ajouté avec succès cliquez <a href="?p=listArtAdmin" >ici pour être re diriger directement</a></p></div>';
+		header('refresh:5;url=?p=listArtAdmin');
+	}
 }
 
 
