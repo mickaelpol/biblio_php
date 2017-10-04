@@ -141,7 +141,7 @@ if (isset($_POST['validFormCom'])) {
 							<div class="row">
 								<div class="col-xs-3">
 									<div class="form-group" id="pseudo_com">
-										<label for="pseudo"><u><i>Pseudo </i></u><?= isset($erreurPseudo) ? $erreurPseudo: "" ?></label>
+										<label for="pseudo"><u><i>Pseudo </i></u><?= isset($erreurPseudoCom) ? $erreurPseudoCom: "" ?></label>
 										<strong id="span"></strong>
 										<input name="pseudo" class="form-control" type="text" id="pseudo_form_com">
 									</div>
@@ -152,7 +152,7 @@ if (isset($_POST['validFormCom'])) {
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="form-group" id="commentaire_com">
-										<label for="commentaire"><u><i>Ajout un commentaire </i></u><?= isset($erreurCom) ? $erreurCom: "" ?></label>
+										<label for="commentaire"><u><i>Ajout un commentaire </i></u><?= isset($erreurContentCom) ? $erreurContentCom: "" ?></label>
 
 										<strong id="span2"></strong>
 										<textarea name="commentaire" class="form-control" id="commentaire_form_com" cols="10" rows="5"></textarea>
