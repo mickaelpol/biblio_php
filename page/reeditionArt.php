@@ -4,6 +4,13 @@ session_start();
 
 $id = $_GET['R'];
 
+function testInput($fichier){
+	if(empty($_POST[$fichier])){
+		return "<div class='text-danger'> le champ ". $fichier . " est vide</div>";
+	} 
+}
+
+
 include('./connect/connection.php');
 
 $sql = sprintf("SELECT * FROM art_article WHERE art_id='%d';" , $id);
@@ -14,20 +21,27 @@ $query->execute();
 
 if (isset($_POST['valid'])) {
 
-	include('./connect/connection.php');
+	$erreurTitreReedit = testInput("titre");
+	$erreurAuteurReedit = testInput("auteur");
+	$erreurGenreReedit = testInput("genre");
+	$erreurContenuReedit = testInput("contenu");
 
-	$titre = htmlspecialchars($_POST["titre"], ENT_QUOTES);
-	$auteur = htmlspecialchars($_POST["auteur"], ENT_QUOTES);
-	$genre = htmlspecialchars($_POST["genre"], ENT_QUOTES);
-	$contenu = htmlspecialchars($_POST["contenu"], ENT_QUOTES);
-
-	$reedit = sprintf("UPDATE art_article SET art_titre='%s', art_auteur='%s', art_genre='%s',art_content='%s', art_date=now()+interval'2 hours' WHERE art_id='%d'", $titre, $auteur, $genre, $contenu, $id);
-
-	$reeditArt = $bdd->prepare($reedit);
-	$reeditArt->execute();
-
-	$message = '<div class="row"><p class="text-success text-center">article modifié avec succès patientez pendant la redirection ou cliquez sur ce <a href="?p=listArtAdmin">Lien</a> </p></div>';
-	header('refresh:3;url=?p=listArtAdmin');
+	if (!empty($_POST['titre'])&& !empty($_POST['auteur']) && !empty($_POST['genre']) && !empty($_POST['contenu'])) {
+		include('./connect/connection.php');
+	
+		$titre = htmlspecialchars($_POST["titre"], ENT_QUOTES);
+		$auteur = htmlspecialchars($_POST["auteur"], ENT_QUOTES);
+		$genre = htmlspecialchars($_POST["genre"], ENT_QUOTES);
+		$contenu = htmlspecialchars($_POST["contenu"], ENT_QUOTES);
+	
+		$reedit = sprintf("UPDATE art_article SET art_titre='%s', art_auteur='%s', art_genre='%s',art_content='%s', art_date=now()+interval'2 hours' WHERE art_id='%d'", $titre, $auteur, $genre, $contenu, $id);
+	
+		$reeditArt = $bdd->prepare($reedit);
+		$reeditArt->execute();
+	
+		$message = '<div class="row"><p class="text-success text-center">article modifié avec succès patientez pendant la redirection ou cliquez sur ce <a href="?p=listArtAdmin">Lien</a> </p></div>';
+		header('refresh:3;url=?p=listArtAdmin');
+	}
 }
 
 
@@ -102,22 +116,22 @@ if (isset($_POST['valid'])) {
 			<form class="form-group" id="reedit" action='?p=reediter&R=<?= $id ?>' method="post">
 				<?= isset($message) ? $message : "" ?>
 				<div class="col-xs-3" id="error1">
-					<label class="text-uppercase" for="titre">Titre <i id="textTitre"></i> <br>
+					<label class="text-uppercase" for="titre">Titre <?= isset($erreurTitreReedit) ? $erreurTitreReedit: "" ?><i id="textTitre"></i> <br>
 						<input id="titre" value="<?= $donnees['art_titre'] ?>" name="titre" class="form-control" type="text">
 					</label>
 				</div>
 				<div class="col-xs-3 col-xs-offset-1" id="error2">
-					<label class="text-uppercase" for="auteur">Auteur <i id="textAuteur"></i> <br>
+					<label class="text-uppercase" for="auteur">Auteur <?= isset($erreurAuteurReedit) ? $erreurAuteurReedit: "" ?><i id="textAuteur"></i> <br>
 						<input id="auteur" value="<?= $donnees['art_auteur'] ?>" name="auteur" class="form-control" type="text">
 					</label>
 				</div>
 				<div class="col-xs-3 col-xs-offset-1" id="error3">
-					<label class="text-uppercase" for="genre">Genre <i id="textGenre"></i> <br>
+					<label class="text-uppercase" for="genre">Genre <?= isset($erreurGenreReedit) ? $erreurGenreReedit: "" ?><i id="textGenre"></i> <br>
 						<input id="genre" value="<?= $donnees['art_genre'] ?>" name="genre" class="form-control" type="text">
 					</label>
 				</div>
 				<div class="col-xs-12" id="error4">
-					<label class="text-uppercase" for="contenu">Contenu de l'article <i id="textContenu"></i> <br>
+					<label class="text-uppercase" for="contenu">Contenu de l'article <?= isset($erreurContenuReedit) ? $erreurContenuReedit: "" ?><i id="textContenu"></i> <br>
 						<textarea id="contenu" class="form-control" name="contenu" cols="200" rows="10"><?= $donnees['art_content'] ?></textarea>
 					</label>
 
