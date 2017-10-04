@@ -107,22 +107,22 @@ if (isset($_POST['valid'])) {
 		<div class="col-xs-12 jumbotron">
 			<form class="form-group" method="post" id="ajourArt" action="?p=ajoutArticle">
 				<div class="col-xs-3" id="error1">
-					<label class="text-uppercase" for="titre">Titre <i id="textTitre"></i> <br>
+					<label class="text-uppercase" for="titre">Titre <?= isset($erreurTitreArt) ? $erreurTitreArt: "" ?> <i id="textTitre"></i> <br>
 						<input id="titre" name="titre" placeholder="ecrire sans markdown" class="form-control" type="text">
 					</label>
 				</div>
 				<div class="col-xs-3 col-xs-offset-1" id="error2">
-					<label class="text-uppercase" for="titre">Auteur <i id="textAuteur"></i> <br>
+					<label class="text-uppercase" for="auteur">Auteur <?= isset($erreurAuteurArt) ? $erreurAuteurArt: "" ?><i id="textAuteur"></i> <br>
 						<input id="auteur" name="auteur" placeholder="ecrire sans markdown" class="form-control" type="text">
 					</label>
 				</div>
 				<div class="col-xs-3 col-xs-offset-1" id="error3">
-					<label class="text-uppercase" for="titre">Genre <i id="textGenre"></i> <br>
+					<label class="text-uppercase" for="genre">Genre <?= isset($erreurGenreArt) ? $erreurGenreArt: "" ?><i id="textGenre"></i> <br>
 						<input id="genre" name="genre" placeholder="ecrire sans markdown" class="form-control" type="text">
 					</label>
 				</div>
 				<div class="col-xs-12" id="error4">
-					<label class="text-uppercase" for="titre">Contenu de l'article <i id="textContenu"></i> <br>
+					<label class="text-uppercase" for="contenu">Contenu de l'article <?= isset($erreurContentArt) ? $erreurContentArt: "" ?><i id="textContenu"></i> <br>
 						<textarea id="contenu" class="form-control" name="content" placeholder="SAUTER DEUX LIGNES AVANT DE COMMENCER A ECRIRE EN MARKDOWN" cols="200" rows="10"></textarea>
 					</label>
 
