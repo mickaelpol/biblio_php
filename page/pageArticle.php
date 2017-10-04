@@ -34,14 +34,18 @@ $comment->execute();
 
 ///////////////////   FONCTION QUI VERIFIE QUE LES INPUTS SOIT REMPLIS ! /////////////////////////////////////
 
-// function testInputRemplis($fichier){
-// 	if (empty($_POST[$fichier])) {
-// 		return "<span class='text-danger'>" ."Le champ " .$fichier. " est vide <br>" . "</span>";
-// 	}
-// }
+function testInputRemplis($fichier){
+	if (empty($_POST[$fichier])) {
+		return "<span class='text-danger'>" ."Le champ " .$fichier. " est vide <br>" . "</span>";
+	}
+}
 
 if (isset($_POST['validFormCom'])) {
 
+	$erreurPseudoCom = ": " . testInputRemplis("pseudo");
+	$erreurContentCom = ": " . testInputRemplis("commentaires");
+
+	if(!empty($_POST['pseudo']) && !empty($_POST['commentaire'])) {
 	include('./connect/connection.php');
 
 	$erreur = "";
@@ -57,6 +61,7 @@ if (isset($_POST['validFormCom'])) {
 	$insertCom = $bdd->prepare($insert);
 	$insertCom->execute();
 	header('refresh:0');
+}
 }
 ?>
 
